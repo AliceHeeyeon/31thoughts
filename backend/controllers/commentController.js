@@ -3,7 +3,7 @@ const Post = require("../models/postModel");
 
 // Create a new comment
 const createComment = async (req, res) => {
-    const {postId} = req.params;
+    const { postId } = req.params;
 
     try {
         const post = await Post.findById(postId);
@@ -20,6 +20,9 @@ const createComment = async (req, res) => {
         await newComment.save();
 
         post.comments.push(newComment);
+        await post.save();
+
+        res.status(201).json(newComment);
         console.log("comment post function is working");
     } catch (err) {
         console.log(err);
