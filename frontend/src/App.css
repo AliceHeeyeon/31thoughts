@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Fredoka", sans-serif;
+    background-color: #F8F4F4;
+}
+
+/* header */
+.header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 50px;
+}
+
+.logo {
+    color: #402022;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.logo span {
+    color: #F14DA3;
+    margin-right: 5px;
+}
+
+.new-btn {
+    background-color: #F14DA3;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: white;
+}
+
+/* Home */
+.home {
+    padding: 50px;
+}
+
+.main {
+    font-size: 50px;
+    text-align: center;
+    color: #402022;
+}
+
+.sub {
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.sorting-category {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+
+.sorting-top,
+.sorting-new {
+    text-align: center;
+    border-bottom: 2px solid black;
+    padding-bottom: 25px;
+    font-size: 20px;
+
+    &:hover {
+        border-bottom: 2px solid#F14DA3;
+    }
+}
+
+
+/* tablet */
+@media screen and (min-width: 768px) {
+    .header {
+        padding: 30px 150px;
+    }
+    .home {
+        padding: 50px 150px;
+    }
+}
+
+/* desktop-small */
+@media screen and (min-width: 992px) {
+    .header {
+        padding: 30px 250px;
+    }
+    .home {
+        padding: 50px 250px;
+    }
+}
+
+/* desktop-small */
+@media screen and (min-width: 1250px) {
+    .header {
+        padding: 30px 400px;
+    }
+    .home {
+        padding: 50px 400px;
+    }
+}
