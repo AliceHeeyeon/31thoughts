@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom";
 import axios from 'axios'
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const baseUrl = import.meta.env.VITE_BASEURL;
 
@@ -20,11 +20,31 @@ const Home = () => {
 
   return (
     <div className="home">
+        <div className="hero">
+            <h1 className="main">31 Picks of the best thoughts</h1>
+            <div className="sub">
+                <p>Write your best advise</p>
+                <p> No login, just click your favorite !</p>
+            </div>
+
+        </div>
       <div className="posts">
+        <div className="sorting-category">
+            <div className="sorting-top">Top</div>
+            <div className="sorting-new">New</div>
+        </div>
                 {posts.map((post) => (
-                    <div key={post._id}>
+                    <div className="post-box" key={post._id}>
                         <h4>{post.subject}</h4>
-                        <p>{post.text}</p>
+                        <p>By {post.author}</p>
+                        <span className="project-time">
+                            {formatDistanceToNow(
+                                new Date(post.createdAt),
+                                { includeSeconds: true },
+                                { addSuffix: true }
+                            )}{" "}
+                            ago
+                        </span>
                         <div>
                             {/* Render comments */}
                             {post.comments.map((comment) => (

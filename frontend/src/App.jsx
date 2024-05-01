@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 
 //pages
 import Home from './pages/Home'
+import AddPost from './pages/AddPost'
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
         <Header />
           <div className='pages'>
             <Routes>
-              <Route path='/' element={<Home />} />
+              <Route path='/' element={<Home />}/>
+              <Route path='/newthought' element={<AddPost />}/>
             </Routes>
           </div>
         <Footer />
