@@ -5,6 +5,6 @@ const {
 } = require("../controllers/commentController");
 
 // Create a new comment for a specific post
-router.post('/posts/:postId/comments', createComment)
+router.post('/:postId/comments', createComment)
 
 module.exports = router

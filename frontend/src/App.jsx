@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 //pages
 import Home from './pages/Home'
 import AddPost from './pages/AddPost'
+import SinglePost from './pages/SinglePost'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />}/>
               <Route path='/newthought' element={<AddPost />}/>
+              <Route path='/:id' element={<SinglePost />}/>
             </Routes>
           </div>
         <Footer />
