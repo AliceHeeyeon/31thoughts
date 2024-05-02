@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 
 const baseUrl = import.meta.env.VITE_BASEURL;
 
@@ -38,13 +39,29 @@ const AddPost = () => {
         }
     };
 
-  return (
-    <form className="add-form" onSubmit={handleSubmit}>
-        <h3>New Thought</h3>
+    const goBack = () => {
+        navigate("/")
+    }
 
-        <div>
-            <label>Your thought</label>
-            <input
+  return (
+    <form className="page" onSubmit={handleSubmit}>
+        <div 
+            className="back-btn"
+            onClick = {goBack}
+        >
+            <HiOutlineArrowNarrowLeft />
+            <p>Back</p>
+        </div>
+
+        <h3 className="page-title">New Thought</h3>
+
+        <div className="form-top">
+            <div className="form-label">
+                <label>Your thought</label>
+                <span>*</span>
+            </div>
+            
+            <textarea
                 type="text"
                 onChange={(e) => setThought(e.target.value)}
                 value={thought}
@@ -52,25 +69,32 @@ const AddPost = () => {
             />
         </div>
 
-        <div>
-            <label>Username</label>
-            <input 
+        <div className="form-bottom">
+         
+            <div className="form-label">
+                <label>Username</label>
+                <span>*</span>
+            </div>
+            <textarea 
                 type="text"
                 onChange={(e) => setUserName(e.target.value)}
                 value={userName}
+                className="input-username"
             />
-        </div>
-
-        <div>
-            <label>Connect with a community via linkedIn!</label>
-            <input 
+       
+            <label className="form-linkedin">
+                Open to connect? Link your LinkedIn!
+            </label>
+            <textarea 
                 type="text"
                 onChange={(e) => setLinkedin(e.target.value)}
                 value={linkedin}
+                className="input-linkedin"
             />
+       
         </div>
 
-        <button type="submit" className="submit-btn">Submit</button>
+        <button type="submit" className="submit-btn">SUBMIT</button>
         {error && <div className="error">{error}</div>}
     </form>
   )

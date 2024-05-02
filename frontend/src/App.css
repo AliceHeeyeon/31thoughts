@@ -39,7 +39,7 @@ body {
 }
 
 /* Home */
-.home {
+.page {
     padding: 50px;
 }
 
@@ -75,6 +75,167 @@ body {
     }
 }
 
+.post-box {
+    background-color: white;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+.post-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-bottom {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgb(148, 148, 148);
+}
+
+.alert {
+    position: absolute;
+    bottom: -50px;
+    right: -20px;
+}
+
+.comment-number {
+    margin-inline : 5px
+}
+
+/* single page */
+textarea,
+input {
+    border: none;
+    border-radius: 10px;
+}
+textarea:focus,
+input:focus {
+    outline: none;
+} 
+
+.add-comment {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-input {
+    height: 100px;
+    line-height: 24px;
+    font-size: 14px;
+    padding: 10px 20px;
+}
+
+.username {
+    margin-top: 10px;
+}
+
+.comment-username {
+    height: 30px;
+    margin-left: 10px;
+    padding-left:10px; 
+}
+
+.comment-btn {
+    border: none;
+    width: 150px;
+    height: 40px;
+    background-color: #F14DA3;
+    color: white;
+    border-radius: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.prev-comment {
+    margin-top: 15px;
+}
+
+.prev-comment-bottom {
+    display: flex;
+    font-size: 14px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgb(148, 148, 148);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+/* Add new thought page */
+.back-btn {
+    display: flex;
+    align-items: center;
+}
+
+.back-btn p {
+    margin-left: 5px;
+}
+
+.page-title {
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+.form-top,
+.form-bottom {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.form-user {
+    display: flex;
+}
+
+.form-linkedin {
+    margin-top: 30px;
+}
+
+.form-label {
+    display: flex;
+}
+
+.form-label span {
+    color: rgb(243, 62, 35);
+    margin-left: 5px;
+}
+
+.form-top textarea {
+    height: 150px;
+    margin-top: 10px;
+    padding: 15px;
+}
+
+.input-username,
+.input-linkedin {
+    height: 40px;
+    padding: 13px 15px;
+    margin-top: 10px;
+    
+}
+
+.submit-btn {
+    margin-top: 50px;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background-color: #F14DA3;
+    color: white;
+    font-size: 15px;
+}
+
 
 /* tablet */
 @media screen and (min-width: 768px) {
@@ -101,7 +262,7 @@ body {
     .header {
         padding: 30px 400px;
     }
-    .home {
+    .page {
         padding: 50px 400px;
     }
 }
