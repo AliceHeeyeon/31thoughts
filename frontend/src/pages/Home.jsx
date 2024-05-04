@@ -4,39 +4,76 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { BsFillHandThumbsUpFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { BsFire } from "react-icons/bs";
+import { BsStars } from "react-icons/bs";
 
 const baseUrl = import.meta.env.VITE_BASEURL;
 
 const Home = () => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
+    const [sortBy, setSortBy] = useState("likes");
 
     useEffect(() => {
-      const postEndPoint = `${baseUrl}/posts`;
-      axios.get(postEndPoint)
-          .then((response) => {
-              setPosts(response.data);
-          })
-          .catch((error) => {
-              console.error("Error fetching posts:", error);
-          });
-  }, [posts]);
-
-  const handleLike = async(postId) => {
-  
-    try {
-        const response = await axios.post(`${baseUrl}/posts/${postId}/like`)
-
-        const updatedPosts = posts.map(post => {
-            if(post._id === postId) {
-                return {...post, likes: response.data.likes}
+        const fetchPosts = async () => {
+            try {
+                const response = await axios.get(`${baseUrl}/posts`);
+                setPosts(response.data);
+                
+                if(sortBy === "date") {
+                    const sortedPosts = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 31);
+                    setPosts(sortedPosts);
+                    return
+                }
+                if(sortBy === "likes") {
+                    const sortedPosts = response.data.sort((a, b) => b.likes - a.likes);
+                    setPosts(sortedPosts);
+                    return
+                }
+                
+            } catch (error) {
+                console.error("Error fetching posts:", error);
             }
-            return post;
-        });
-        setPosts(updatedPosts)
-    } catch(err) {
-        console.error("Error liking post:", err)
-    }
+        };
+
+        fetchPosts();
+  }, [posts]);  
+
+  // sorting by date 상태일때 좋아요 업데이트 안됨
+    const handleLike = async (postId) => {
+        try {
+            const response = await axios.post(`${baseUrl}/posts/${postId}/like`);
+            setPosts(prevPosts => {
+                if(sortBy === "date") {
+                    return prevPosts.map(post => {
+                        if(post._id === postId) {
+                            return {...post, likes: response.data.likes};
+                        }
+                        return post;
+                    }).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 31);
+                }
+                if(sortBy === "likes") {
+                    return prevPosts.map(post => {
+                        if (post._id === postId) {
+                            return {...post, likes: response.data.likes};
+                        }
+                       
+                        return post;
+                    }).sort((a, b) => b.likes - a.likes);
+                }
+            });
+        } 
+        catch(err) {
+            console.error("Error liking post:", err);
+        }
+    };
+
+  const sortingByLike = () => {
+    setSortBy("likes");
+  }
+
+  const sortingByDate = () => {
+    setSortBy("date");
   }
 
   return (
@@ -51,8 +88,18 @@ const Home = () => {
         </div>
       <div className="posts">
         <div className="sorting-category">
-            <div className="sorting-top">Top</div>
-            <div className="sorting-new">New</div>
+            <div 
+                className={`sorting-option ${sortBy === 'likes' ? 'sorting-like' : ''} cursor-pointer`}
+                onClick={sortingByLike}
+            >
+                <BsFire />Top
+            </div>
+            <div 
+                className={`sorting-option ${sortBy === 'date' ? 'sorting-date' : ''} cursor-pointer`}
+                onClick={sortingByDate}
+            >
+                <BsStars />New
+            </div>
         </div>
                 {posts.map((post, index) => (
                     <div 
@@ -62,7 +109,7 @@ const Home = () => {
 
                         <div className="post-top">
                             <p 
-                                className="text"
+                                className="text cursor-zoom-in"
                                 onClick={() => navigate(`/${post._id}`)}
                             
                             >
@@ -72,12 +119,19 @@ const Home = () => {
                                 {post.likes}
                                 <BsFillHandThumbsUpFill 
                                     onClick={() => handleLike(post._id)}
+                                    className="cursor-pointer"
                                 />
                             </div>
                         </div>
 
                         <div className="post-bottom">
-                            <p>By {post.author}</p>
+                            {post.linkedin ? (
+                                <a className='user-linkedin' href={`https://www.linkedin.com/in/${post.linkedin}/`} target="_blank" rel="noopener noreferrer">
+                                    {post.author}
+                                </a>
+                            ) : (
+                                <span>{post.author}</span>
+                            )}
                             <span className="post-time">
                                 {formatDistanceToNow(
                                     new Date(post.createdAt),
@@ -89,7 +143,7 @@ const Home = () => {
                             <p className="comment-number">{post.comments.length} comment{post.comments.length >  1 ? 's' : ''}</p>
                          
                             <CopyToClipboard text={`${baseUrl}/posts/${post._id}`}>
-                            <span>| Share</span>
+                            <span className="cursor-copy">| Share</span>
                             </CopyToClipboard>
                         </div>
 

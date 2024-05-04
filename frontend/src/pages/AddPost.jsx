@@ -37,6 +37,10 @@ const AddPost = () => {
             console.log(err.response);
             setError(err.message);
         }
+
+        if(!thought || !userName) {
+            setError("Hey! Can you fill in the required field?😱")
+        }
     };
 
     const goBack = () => {
@@ -46,7 +50,7 @@ const AddPost = () => {
   return (
     <form className="page" onSubmit={handleSubmit}>
         <div 
-            className="back-btn"
+            className="back-btn cursor-pointer"
             onClick = {goBack}
         >
             <HiOutlineArrowNarrowLeft />
@@ -89,13 +93,14 @@ const AddPost = () => {
                 type="text"
                 onChange={(e) => setLinkedin(e.target.value)}
                 value={linkedin}
+                placeholder="Just include what comes after 'in/'"
                 className="input-linkedin"
             />
-       
+            {error && <div className="error">{error}</div>}
         </div>
-
+        
         <button type="submit" className="submit-btn">SUBMIT</button>
-        {error && <div className="error">{error}</div>}
+        
     </form>
   )
 }
