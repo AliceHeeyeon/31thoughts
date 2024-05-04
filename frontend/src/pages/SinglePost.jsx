@@ -6,6 +6,20 @@ import { BsFillHandThumbsUpFill } from "react-icons/bs";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import Alert from '@mui/material/Alert';
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
+import {
+    FacebookShareButton,
+    FacebookIcon,
+    LinkedinShareButton,
+    LinkedinIcon,
+    PinterestShareButton,
+    PinterestIcon,
+    RedditShareButton,
+    RedditIcon,
+    TelegramShareButton,
+    TelegramIcon,
+    TwitterShareButton,
+    XIcon,
+  } from "react-share";
 
 const baseUrl = import.meta.env.VITE_BASEURL;
 
@@ -16,6 +30,7 @@ const SinglePost = () => {
     const [newComment, setNewComment] = useState("");
     const [userName, setUserName] = useState("");
     const [copied, setCopied] = useState(false);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         axios.get(`${baseUrl}/posts/${id}`)
@@ -26,6 +41,8 @@ const SinglePost = () => {
             console.log(err);
         })
     },[id, post])
+
+    
 
     const handleLike = async(postId) => {
         try {
@@ -38,6 +55,11 @@ const SinglePost = () => {
     }
 
     const handleAddComment = async () => {
+        if(!newComment || !userName){
+            setError("Add your comment and name – easy peasy! 😉")
+            return
+        }
+      
         try {
             const response = await axios.post(`${baseUrl}/comments/${id}/comments`,
                 {
@@ -54,10 +76,13 @@ const SinglePost = () => {
                 setPost(updatedPost);
                 setNewComment("");
                 setUserName("");
+                setError("");
             }
         } catch(err) {
             console.error("Error Adding Comment:", err);
+            setError(err)
         }
+
     };
 
     const handleCopy = () => {
@@ -70,11 +95,15 @@ const SinglePost = () => {
     const goBack = () => {
         navigate("/")
     }
+
+    if(!post) return null;
+
+    const shareUrl = `www.alicekim.co.nz`;
     
   return (
     <div className="single-page page">
         <div 
-            className="back-btn"
+            className="back-btn cursor-pointer"
             onClick = {goBack}
         >
             <HiOutlineArrowNarrowLeft />
@@ -90,13 +119,14 @@ const SinglePost = () => {
                         {post.likes}
                         <BsFillHandThumbsUpFill 
                             onClick={() => handleLike(post._id)}
+                            className="cursor-cell"
                         />
                     </div>
                 </div>
         
                 <div className="post-bottom">
                     <p>By {post.author}</p>
-                    <span className="project-time">
+                    <span className="post-time">
                         {formatDistanceToNow(
                             new Date(post.createdAt),
                             { includeSeconds: true },
@@ -110,7 +140,7 @@ const SinglePost = () => {
                         text={`${baseUrl}/posts/${post._id}`}
                         onCopy={handleCopy}
                     >
-                        <p>| Share</p>
+                        <p className="cursor-copy">| Share</p>
                     </CopyToClipboard>
 
                     {copied && (
@@ -127,6 +157,27 @@ const SinglePost = () => {
                 
             </div>
             {/* end of post */}
+
+            <div className="social-sharing">
+                <FacebookShareButton url={shareUrl}>
+                    <FacebookIcon size={32} round={true}/>
+                </FacebookShareButton>
+                <TwitterShareButton url={shareUrl}>
+                    <XIcon size={32} round={true} />
+                </TwitterShareButton>
+                <RedditShareButton url={shareUrl}>
+                    <RedditIcon size={32} round={true} />
+                </RedditShareButton>
+                <TelegramShareButton url={shareUrl}>
+                    <TelegramIcon size={32} round={true} />
+                </TelegramShareButton>
+                <PinterestShareButton url={shareUrl}>
+                    <PinterestIcon size={32} round={true} />
+                </PinterestShareButton>
+                <LinkedinShareButton url={shareUrl}>
+                    <LinkedinIcon size={32} round={true} />
+                </LinkedinShareButton>
+            </div>
 
             <div className="comments">
 
@@ -147,7 +198,7 @@ const SinglePost = () => {
                             value={userName}
                         />
                     </div>
-                    
+                    {error && <div className="singlepage-error">{error}</div>}
                     <button 
                         onClick={handleAddComment}
                         className="comment-btn"

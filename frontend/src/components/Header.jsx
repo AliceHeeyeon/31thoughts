@@ -6,14 +6,14 @@ const Header = () => {
   return (
     <div className="header">
       <div 
-        className="logo"
+        className="logo cursor-pointer"
         onClick={() => navigate("/")}
       >
         <span>31</span>
         Thoughts
       </div>
       <button 
-        className="new-btn"
+        className="new-btn cursor-pointer"
         onClick={() => navigate("/newthought")}
       >
         + NEW

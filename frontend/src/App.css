@@ -1,4 +1,11 @@
+/* Google font */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     margin: 0;
     padding: 0;
@@ -34,8 +41,9 @@ body {
     background-color: #F14DA3;
     border: none;
     border-radius: 30px;
-    padding: 10px 20px;
+    padding: 8px 20px;
     color: white;
+    font-size: 15px;
 }
 
 /* Home */
@@ -63,16 +71,30 @@ body {
     width: 100%;
 }
 
-.sorting-top,
-.sorting-new {
+.sorting-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     border-bottom: 2px solid black;
     padding-bottom: 25px;
     font-size: 20px;
 
     &:hover {
-        border-bottom: 2px solid#F14DA3;
+        color: #F14DA3;
     }
+}
+
+.sorting-option svg {
+    margin-right: 5px;
+}
+
+.sorting-like {
+    border-bottom: 2px solid#F14DA3;
+}
+
+.sorting-date {
+    border-bottom: 2px solid#F14DA3;
 }
 
 .post-box {
@@ -88,6 +110,15 @@ body {
     justify-content: space-between;
 }
 
+.like {
+    display: flex;
+    align-items: center;
+}
+
+.like svg {
+    margin-left: 3px;
+}
+
 .post-bottom {
     position: relative;
     display: flex;
@@ -95,6 +126,10 @@ body {
     margin-top: 10px;
     font-size: 14px;
     color: rgb(148, 148, 148);
+}
+
+.post-time {
+    margin-left: 5px;
 }
 
 .alert {
@@ -105,6 +140,10 @@ body {
 
 .comment-number {
     margin-inline : 5px
+}
+
+.user-linkedin {
+    text-decoration: underline;
 }
 
 /* single page */
@@ -118,7 +157,16 @@ input:focus {
     outline: none;
 } 
 
+.social-sharing {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
 .add-comment {
+    position: relative;
     display: flex;
     flex-direction: column;
 }
@@ -138,6 +186,7 @@ input:focus {
     height: 30px;
     margin-left: 10px;
     padding-left:10px; 
+    font-size: 14px;
 }
 
 .comment-btn {
@@ -147,7 +196,7 @@ input:focus {
     background-color: #F14DA3;
     color: white;
     border-radius: 30px;
-    margin-top: 20px;
+    margin-top: 35px;
     margin-bottom: 10px;
 }
 .prev-comment {
@@ -162,15 +211,14 @@ input:focus {
     color: rgb(148, 148, 148);
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
+.singlepage-error {
+    position: absolute;
     left: 0;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 15px;
-    font-size: 12px;
+    bottom: 56px;
+    color: #F14DA3;
 }
+
+
 
 /* Add new thought page */
 .back-btn {
@@ -192,6 +240,10 @@ footer {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
+}
+
+.form-bottom {
+    position: relative;
 }
 
 .form-user {
@@ -220,7 +272,7 @@ footer {
 .input-username,
 .input-linkedin {
     height: 40px;
-    padding: 13px 15px;
+    padding: 8px 15px;
     margin-top: 10px;
     
 }
@@ -236,14 +288,52 @@ footer {
     font-size: 15px;
 }
 
+.error {
+    color: rgb(255, 0, 153);
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+    background-color:#fb64b2;
+}
+
+.developer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.developer img {
+    width: 35px;
+    margin-left: 5px;
+}
+
 
 /* tablet */
 @media screen and (min-width: 768px) {
     .header {
         padding: 30px 150px;
     }
-    .home {
+    .home,
+    .page {
         padding: 50px 150px;
+    }
+    footer {
+        padding-inline: 150px;
     }
 }
 
@@ -252,8 +342,12 @@ footer {
     .header {
         padding: 30px 250px;
     }
-    .home {
+    .home,
+    .page {
         padding: 50px 250px;
+    }
+    footer {
+        padding-inline: 250px;
     }
 }
 
@@ -262,7 +356,11 @@ footer {
     .header {
         padding: 30px 400px;
     }
+    .home,
     .page {
         padding: 50px 400px;
+    }
+    footer {
+        padding-inline: 400px;
     }
 }
