@@ -26,7 +26,7 @@ const Home = () => {
                     return
                 }
                 if(sortBy === "likes") {
-                    const sortedPosts = response.data.sort((a, b) => b.likes - a.likes);
+                    const sortedPosts = response.data.sort((a, b) => b.likes - a.likes).slice(0, 31);
                     setPosts(sortedPosts);
                     return
                 }
@@ -39,7 +39,7 @@ const Home = () => {
         fetchPosts();
   }, [posts]);  
 
-  // sorting by date 상태일때 좋아요 업데이트 안됨
+
     const handleLike = async (postId) => {
         try {
             const response = await axios.post(`${baseUrl}/posts/${postId}/like`);
@@ -59,7 +59,7 @@ const Home = () => {
                         }
                        
                         return post;
-                    }).sort((a, b) => b.likes - a.likes);
+                    }).sort((a, b) => b.likes - a.likes).slice(0, 31);
                 }
             });
         } 
