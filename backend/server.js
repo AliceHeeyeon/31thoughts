@@ -22,8 +22,8 @@ app.use((req, res, next) => {
 });
 
 //Attach Routes to the app
-app.use("/api/posts/", postRoutes);
-app.use("/api/comments", commentRoutes);
+app.use("/posts/", postRoutes);
+app.use("/comments", commentRoutes);
 
 //Mongo username, password, database
 const mongoUsername = process.env.MONGODB_USERNAME;
