@@ -137,7 +137,7 @@ const SinglePost = () => {
                     <p className="comment-number">{post.comments.length} comment{post.comments.length >  1 ? 's' : ''}</p>
                 
                     <CopyToClipboard 
-                        text={`${baseUrl}/posts/${post._id}`}
+                        text={`https://31thoughts.vercel.app/${post._id}`}
                         onCopy={handleCopy}
                     >
                         <p className="cursor-copy">| Share</p>

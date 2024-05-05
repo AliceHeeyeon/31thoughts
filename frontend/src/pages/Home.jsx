@@ -157,7 +157,7 @@ const Home = () => {
                                 {post.comments.length} comment{post.comments.length >  1 ? 's' : ''}
                             </p>
                          
-                            <CopyToClipboard text={`${baseUrl}/posts/${post._id}`}
+                            <CopyToClipboard text={`https://31thoughts.vercel.app/${post._id}`}
                             onCopy={() => handleCopy(post._id)}
                             >
                             <span className="cursor-copy">| Share</span>
