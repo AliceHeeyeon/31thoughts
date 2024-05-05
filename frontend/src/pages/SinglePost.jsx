@@ -42,8 +42,6 @@ const SinglePost = () => {
         })
     },[id, post])
 
-    
-
     const handleLike = async(postId) => {
         try {
             const response = await axios.post(`${baseUrl}/posts/${postId}/like`)
@@ -98,7 +96,7 @@ const SinglePost = () => {
 
     if(!post) return null;
 
-    const shareUrl = `${baseUrl}/posts/${id}`;
+    const shareUrl = `https://31thoughts.vercel.app/#/posts/${id}`;
     
   return (
     <div className="single-page page">
@@ -137,7 +135,7 @@ const SinglePost = () => {
                     <p className="comment-number">{post.comments.length} comment{post.comments.length >  1 ? 's' : ''}</p>
                 
                     <CopyToClipboard 
-                        text={`https://31thoughts.vercel.app/${post._id}`}
+                        text={shareUrl}
                         onCopy={handleCopy}
                     >
                         <p className="cursor-copy">| Share</p>
