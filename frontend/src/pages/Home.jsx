@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { BsFire } from "react-icons/bs";
 import { BsStars } from "react-icons/bs";
+import Alert from '@mui/material/Alert';
 
 const baseUrl = import.meta.env.VITE_BASEURL;
 
@@ -13,6 +14,7 @@ const Home = () => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
     const [sortBy, setSortBy] = useState("likes");
+    const [copiedPostId, setCopiedPostId] = useState(null);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -75,6 +77,13 @@ const Home = () => {
   const sortingByDate = () => {
     setSortBy("date");
   }
+
+  const handleCopy = (postId) => {
+    setCopiedPostId(postId);
+    setTimeout(() => {
+        setCopiedPostId(null);
+    },1000);
+  };
 
   return (
     <div className="home page">
@@ -140,11 +149,29 @@ const Home = () => {
                                 )}{" "}
                                 ago |
                             </span>
-                            <p className="comment-number">{post.comments.length} comment{post.comments.length >  1 ? 's' : ''}</p>
+                            <p 
+                                className="comment-number cursor-pointer"
+                                onClick={() => navigate(`/${post._id}`)}
+                                
+                            >
+                                {post.comments.length} comment{post.comments.length >  1 ? 's' : ''}
+                            </p>
                          
-                            <CopyToClipboard text={`${baseUrl}/posts/${post._id}`}>
+                            <CopyToClipboard text={`${baseUrl}/posts/${post._id}`}
+                            onCopy={() => handleCopy(post._id)}
+                            >
                             <span className="cursor-copy">| Share</span>
                             </CopyToClipboard>
+
+                            {copiedPostId === post._id && (
+                                <Alert 
+                                    severity="success" 
+                                    color="warning"
+                                    className="alert"
+                                >
+                                    Link copied to clipboard!
+                                </Alert>
+                            )}
                         </div>
 
                     </div>
