@@ -98,7 +98,7 @@ const SinglePost = () => {
 
     if(!post) return null;
 
-    const shareUrl = `www.alicekim.co.nz`;
+    const shareUrl = `${baseUrl}/posts/${id}`;
     
   return (
     <div className="single-page page">
