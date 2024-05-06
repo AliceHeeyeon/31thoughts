@@ -1,4 +1,4 @@
-# 31Thoughts
+# ![mockup1](./frontend/public/idea.png) 31Thoughts 
 >
 > Project Description
 
