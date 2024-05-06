@@ -23,12 +23,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 50px;
+    padding: 15px 30px;
 }
 
 .logo {
     color: #402022;
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 600;
 }
 
@@ -41,28 +41,31 @@ body {
     background-color: #F14DA3;
     border: none;
     border-radius: 30px;
-    padding: 8px 20px;
+    padding: 6px 15px;
     color: white;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 /* Home */
 .page {
-    padding: 50px;
+    padding: 30px 30px 60px;
 }
 
 .main {
-    font-size: 50px;
+    font-size: 30px;
     text-align: center;
+    line-height: 38px;
+    font-weight: 600;
     color: #402022;
 }
 
 .sub {
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
     text-align: center;
     margin-top: 20px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .sorting-category {
@@ -77,8 +80,8 @@ body {
     align-items: center;
     text-align: center;
     border-bottom: 2px solid black;
-    padding-bottom: 25px;
-    font-size: 20px;
+    padding-bottom: 18px;
+    font-size: 18px;
 
     &:hover {
         color: #F14DA3;
@@ -110,6 +113,10 @@ body {
     justify-content: space-between;
 }
 
+.post-top p{
+    line-height: 21px;
+}
+
 .like {
     display: flex;
     align-items: center;
@@ -124,7 +131,7 @@ body {
     display: flex;
     justify-content: end;
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 11px;
     color: rgb(148, 148, 148);
 }
 
@@ -302,11 +309,11 @@ footer {
     left: 0;
     text-align: center;
     width: 100%;
-    font-size: 12px;
+    font-size: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 50px;
+    padding: 5px 30px;
     background-color:#fb64b2;
 }
 
@@ -351,16 +358,56 @@ footer {
 
 /* desktop-small */
 @media screen and (min-width: 992px) {
-    .header {
-        padding: 30px 250px;
-    }
     .home,
     .page {
         padding: 50px 250px;
     }
     footer {
         padding-inline: 250px;
+        font-size: 12px;
     }
+
+    /* header */
+    .header {
+        padding: 30px 250px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .new-btn {
+        padding: 8px 20px;
+        font-size: 15px;
+    }
+
+    /* Home */
+    .main {
+        font-size: 45px;
+        line-height: 65px;
+    }
+
+    .sub {
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 30px;
+        margin-bottom: 65px;
+    }
+
+    .sorting-option {
+        padding-bottom: 25px;
+        font-size: 20px;
+    }
+
+    .post-top p{
+        line-height: 21px;
+    }
+    
+    .post-bottom {
+        font-size: 14px;
+    }
+
+    
 }
 
 /* desktop-small */
