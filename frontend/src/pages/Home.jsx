@@ -7,6 +7,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { BsFire } from "react-icons/bs";
 import { BsStars } from "react-icons/bs";
 import Alert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const baseUrl = import.meta.env.VITE_BASEURL;
 
@@ -15,12 +16,15 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
     const [sortBy, setSortBy] = useState("likes");
     const [copiedPostId, setCopiedPostId] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchPosts = async () => {
+            
             try {
                 const response = await axios.get(`${baseUrl}/posts`);
                 setPosts(response.data);
+                setLoading(false);
                 
                 if(sortBy === "date") {
                     const sortedPosts = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 31);
@@ -35,11 +39,34 @@ const Home = () => {
                 
             } catch (error) {
                 console.error("Error fetching posts:", error);
+                setLoading(false)
             }
         };
 
         fetchPosts();
   }, [posts]);  
+
+  useEffect(() => {
+    setLoading(true);
+    const timeout = setTimeout(() => setLoading(false), 1000);
+  },[])
+
+  if(loading) {
+    return (
+        <div className="loading">
+            <svg width={0} height={0}>
+                <defs>
+                <linearGradient id="my_gradient">
+                    <stop offset="0%" stopColor="#e01cd5" />
+                    <stop offset="100%" stopColor="#fb64b2" />
+                </linearGradient>
+                </defs>
+            </svg>
+            <CircularProgress sx={{'svg circle': { stroke: 'url(#my_gradient)' } }} />
+            <p className="text-loading">Loading</p>
+        </div>
+    )
+  }
 
 
     const handleLike = async (postId) => {

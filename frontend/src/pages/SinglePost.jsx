@@ -96,7 +96,7 @@ const SinglePost = () => {
 
     if(!post) return null;
 
-    const shareUrl = `https://31thoughts.vercel.app/#/posts/${id}`;
+    const shareUrl = `https://31thoughts.vercel.app/#/${id}`;
     
   return (
     <div className="single-page page">

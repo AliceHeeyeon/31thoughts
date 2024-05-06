@@ -322,6 +322,18 @@ footer {
     margin-left: 5px;
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.text-loading {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
 
 /* tablet */
 @media screen and (min-width: 768px) {
