@@ -79,8 +79,7 @@ const handleLike = async (postId) => {
 
 > Project Mockups
 
-![mockup1](./frontend/public/mockup.png)
-
+![mockup1](./frontend/public/mockup_mobile.png)
 www.31thoughts.com
 
 
