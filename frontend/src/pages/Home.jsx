@@ -10,6 +10,7 @@ import Alert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
 
 const baseUrl = import.meta.env.VITE_BASEURL;
+const MAX_LIKES_PER_POST = 1;
 
 const Home = () => {
     const navigate = useNavigate();
@@ -49,27 +50,29 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     const timeout = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timeout);
   },[])
 
-  if(loading) {
-    return (
-        <div className="loading">
-            <svg width={0} height={0}>
-                <defs>
-                <linearGradient id="my_gradient">
-                    <stop offset="0%" stopColor="#e01cd5" />
-                    <stop offset="100%" stopColor="#fb64b2" />
-                </linearGradient>
-                </defs>
-            </svg>
-            <CircularProgress sx={{'svg circle': { stroke: 'url(#my_gradient)' } }} />
-            <p className="text-loading">Loading</p>
-        </div>
-    )
-  }
+    const getLikesFromLocalStorage = (postId) => {
+        const likes = localStorage.getItem(`post-${postId}-likes`);
+        return likes ? parseInt(likes, 10) : 0;
+    };
 
+    const incrementLikesInLocalStorage = (postId) => {
+        const currentLikes = getLikesFromLocalStorage(postId);
+        localStorage.setItem(`post-${postId}-likes`, currentLikes + 1);
+    };
+
+    const canLikePost = (postId) => {
+        const currentLikes = getLikesFromLocalStorage(postId);
+        return currentLikes < MAX_LIKES_PER_POST;
+    };
 
     const handleLike = async (postId) => {
+        if (!canLikePost(postId)) {
+            alert(`You can only like a post up to ${MAX_LIKES_PER_POST} times.`);
+            return;
+        }
         try {
             const response = await axios.post(`${baseUrl}/posts/${postId}/like`);
             setPosts(prevPosts => {
@@ -86,11 +89,11 @@ const Home = () => {
                         if (post._id === postId) {
                             return {...post, likes: response.data.likes};
                         }
-                       
                         return post;
                     }).sort((a, b) => b.likes - a.likes).slice(0, 31);
                 }
             });
+            incrementLikesInLocalStorage(postId);
         } 
         catch(err) {
             console.error("Error liking post:", err);
@@ -111,6 +114,23 @@ const Home = () => {
         setCopiedPostId(null);
     },1000);
   };
+
+  if(loading) {
+    return (
+        <div className="loading">
+            <svg width={0} height={0}>
+                <defs>
+                <linearGradient id="my_gradient">
+                    <stop offset="0%" stopColor="#e01cd5" />
+                    <stop offset="100%" stopColor="#fb64b2" />
+                </linearGradient>
+                </defs>
+            </svg>
+            <CircularProgress sx={{'svg circle': { stroke: 'url(#my_gradient)' } }} />
+            <p className="text-loading">Loading</p>
+        </div>
+    )
+  }
 
   return (
     <div className="home page">
