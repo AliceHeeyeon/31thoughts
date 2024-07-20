@@ -16,6 +16,17 @@ const AddPost = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
 
+        if(!thought || !userName) {
+            setError("Hey! Can you fill in the required field?😱");
+            return;
+        }
+
+        const linkedinPattern = /^((https?:\/\/)?(www\.)?linkedin\.com\/in\/)/
+        if (linkedinPattern.test(linkedin)) {
+            setError("Please enter what comes after 'https://www.linkedin.com/in/'")
+            return;
+        }
+
         try {
             const response = await axios.post(
                 `${baseUrl}/posts/`,
@@ -38,9 +49,6 @@ const AddPost = () => {
             setError(err.message);
         }
 
-        if(!thought || !userName) {
-            setError("Hey! Can you fill in the required field?😱")
-        }
     };
 
     const goBack = () => {
