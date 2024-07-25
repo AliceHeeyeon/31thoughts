@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react"
 import axios from 'axios'
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
@@ -8,6 +9,9 @@ import { BsFire } from "react-icons/bs";
 import { BsStars } from "react-icons/bs";
 import Alert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
+
+//When testing
+//const baseUrl = process.env.VITE_BASEURL;
 
 const baseUrl = import.meta.env.VITE_BASEURL;
 const MAX_LIKES_PER_POST = 1;
