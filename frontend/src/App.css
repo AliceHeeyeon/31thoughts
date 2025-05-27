@@ -15,11 +15,22 @@
 body {
     font-family: "Fredoka", sans-serif;
     background-color: #F8F4F4;
+    color: #402022; /* Default text color for light mode */
+}
+
+.dark body {
+    background-color: #1a202c; /* Dark background for body */
+    color: #e2e8f0; /* Light text color for body */
 }
 
 /* header */
 .header {
     background-color: white;
+}
+
+.dark .header {
+    background-color: #2d3748; /* Dark background for header */
+    color: #e2e8f0; /* Light text color for header */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -82,10 +93,14 @@ body {
     border-bottom: 2px solid black;
     padding-bottom: 18px;
     font-size: 18px;
+}
 
-    &:hover {
-        color: #F14DA3;
-    }
+.dark .sorting-option {
+    border-bottom: 2px solid #a0aec0; /* Lighter border for dark mode */
+}
+
+.dark .sorting-option:hover {
+    color: #F14DA3;
 }
 
 .sorting-option svg {
@@ -102,10 +117,17 @@ body {
 
 .post-box {
     background-color: white;
+    color: #402022; /* Default text color for post-box in light mode */
     margin-bottom: 10px;
     margin-top: 20px;
     padding: 15px 20px;
     border-radius: 10px;
+}
+
+.dark .post-box {
+    background-color: #2d3748; /* Dark background for post-box */
+    color: #e2e8f0; /* Light text color for post-box */
+    border: 1px solid #4a5568; /* Optional: add a border for better separation */
 }
 
 .post-top {
@@ -135,6 +157,10 @@ body {
     color: rgb(148, 148, 148);
 }
 
+.dark .post-bottom {
+    color: #a0aec0; /* Lighter text color for post-bottom in dark mode */
+}
+
 .post-time {
     margin-left: 5px;
 }
@@ -158,11 +184,25 @@ textarea,
 input {
     border: none;
     border-radius: 10px;
+    background-color: #fff; /* Default light background */
+    color: #402022; /* Default dark text */
 }
 textarea:focus,
 input:focus {
     outline: none;
-} 
+}
+
+.dark textarea,
+.dark input {
+    background-color: #4a5568; /* Darker background for inputs */
+    color: #e2e8f0; /* Light text for inputs */
+    border: 1px solid #718096; /* Optional: border for inputs */
+}
+
+.dark textarea::placeholder,
+.dark input::placeholder {
+    color: #a0aec0; /* Lighter placeholder text */
+}
 
 .social-sharing {
     display: flex;
@@ -206,6 +246,12 @@ input:focus {
     margin-top: 35px;
     margin-bottom: 10px;
 }
+
+.dark .comment-btn {
+    background-color: #e53e8c; /* Slightly adjusted pink for dark mode if needed */
+    color: #1a202c; /* Darker text for better contrast on pink */
+}
+
 .prev-comment {
     margin-top: 15px;
 }
@@ -216,6 +262,10 @@ input:focus {
     margin-top: 10px;
     font-size: 14px;
     color: rgb(148, 148, 148);
+}
+
+.dark .prev-comment-bottom {
+    color: #a0aec0; /* Lighter text for comment metadata in dark mode */
 }
 
 .singlepage-error {
@@ -299,6 +349,63 @@ input:focus {
     color: rgb(255, 0, 153);
     position: absolute;
     bottom: -30px;
+}
+
+.dark .error {
+    color: #ff63b2; /* Adjusted error color for dark mode */
+}
+
+.dark .logo {
+    color: #e2e8f0; /* Light text for logo in dark mode */
+}
+
+.dark .logo span {
+    color: #F14DA3; /* Keep pink for logo span */
+}
+
+.dark .new-btn {
+    background-color: #F14DA3; /* Keep pink for new button */
+    color: #1a202c; /* Darker text for better contrast on pink */
+}
+
+.dark .main {
+    color: #e2e8f0; /* Light text for main heading in dark mode */
+}
+
+.dark .sub {
+    color: #cbd5e0; /* Slightly dimmer light text for sub heading */
+}
+
+.dark .user-linkedin {
+    color: #63b3ed; /* Lighter blue for links in dark mode */
+}
+
+/* Ensure theme switcher button itself has appropriate dark mode styles if not covered by global button styles */
+.dark .theme-switcher-btn {
+    background-color: #4a5568; /* Darker background for theme switcher */
+    color: #e2e8f0; /* Light text */
+    border: 1px solid #718096;
+}
+
+.dark .back-btn p {
+    color: #e2e8f0;
+}
+
+.dark .page-title {
+    color: #e2e8f0;
+}
+
+.dark .form-label {
+    color: #e2e8f0;
+}
+
+.dark .form-label span { /* Keep this for required asterisk if any */
+    color: rgb(243, 62, 35);
+}
+
+.dark .submit-btn {
+    background-color: #F14DA3;
+    color: #1a202c;
     left: 0;
 }
 

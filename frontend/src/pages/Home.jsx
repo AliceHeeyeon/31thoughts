@@ -121,7 +121,7 @@ const Home = () => {
 
   if(loading) {
     return (
-        <div className="loading">
+        <div className="loading dark:bg-gray-900">
             <svg width={0} height={0}>
                 <defs>
                 <linearGradient id="my_gradient">
@@ -131,68 +131,67 @@ const Home = () => {
                 </defs>
             </svg>
             <CircularProgress sx={{'svg circle': { stroke: 'url(#my_gradient)' } }} />
-            <p className="text-loading">Loading</p>
+            <p className="text-loading dark:text-gray-200">Loading</p>
         </div>
     )
   }
 
   return (
-    <div className="home page">
+    <div className="home page bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <div className="hero">
-            <h1 className="main">31 Picks of the best thoughts</h1>
-            <div className="sub">
+            <h1 className="main text-gray-800 dark:text-gray-100">31 Picks of the best thoughts</h1>
+            <div className="sub text-gray-600 dark:text-gray-300">
                 <p>Write your best advise</p>
                 <p> No login, just click your favorite !</p>
             </div>
 
         </div>
       <div className="posts">
-        <div className="sorting-category">
-            <div 
-                className={`sorting-option ${sortBy === 'likes' ? 'sorting-like' : ''} cursor-pointer`}
+        <div className="sorting-category bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+            <div
+                className={`sorting-option ${sortBy === 'likes' ? 'sorting-like text-pink-500 border-pink-500' : 'text-gray-700 dark:text-gray-300 border-transparent hover:text-pink-500 dark:hover:text-pink-400'} cursor-pointer p-4 flex items-center justify-center`}
                 onClick={sortingByLike}
             >
-                <BsFire />Top
+                <BsFire className="mr-2" />Top
             </div>
-            <div 
-                className={`sorting-option ${sortBy === 'date' ? 'sorting-date' : ''} cursor-pointer`}
+            <div
+                className={`sorting-option ${sortBy === 'date' ? 'sorting-date text-pink-500 border-pink-500' : 'text-gray-700 dark:text-gray-300 border-transparent hover:text-pink-500 dark:hover:text-pink-400'} cursor-pointer p-4 flex items-center justify-center`}
                 onClick={sortingByDate}
             >
-                <BsStars />New
+                <BsStars className="mr-2" />New
             </div>
         </div>
                 {posts.map((post, index) => (
-                    <div 
-                        className="post-box" 
+                    <div
+                        className="post-box bg-white dark:bg-gray-800 shadow-md rounded-lg my-4 p-4"
                         key={post._id}
                     >
 
-                        <div className="post-top">
-                            <p 
-                                className="text cursor-zoom-in"
+                        <div className="post-top flex justify-between items-center">
+                            <p
+                                className="text-lg font-semibold text-gray-800 dark:text-gray-100 cursor-zoom-in"
                                 onClick={() => navigate(`/${post._id}`)}
-                            
                             >
                                 {index + 1}. {post.subject}
                             </p>
-                            <div className="like">
+                            <div className="like flex items-center text-gray-600 dark:text-gray-400">
                                 {post.likes}
-                                <BsFillHandThumbsUpFill 
+                                <BsFillHandThumbsUpFill
                                     onClick={() => handleLike(post._id)}
-                                    className="cursor-pointer"
+                                    className="cursor-pointer ml-1 text-pink-500 hover:text-pink-600 dark:text-pink-400 dark:hover:text-pink-500"
                                 />
                             </div>
                         </div>
 
-                        <div className="post-bottom">
+                        <div className="post-bottom mt-2 text-sm text-gray-500 dark:text-gray-400">
                             {post.linkedin ? (
-                                <a className='user-linkedin' href={`https://www.linkedin.com/in/${post.linkedin}/`} target="_blank" rel="noopener noreferrer">
+                                <a className='user-linkedin text-blue-500 hover:underline dark:text-blue-400' href={`https://www.linkedin.com/in/${post.linkedin}/`} target="_blank" rel="noopener noreferrer">
                                     {post.author}
                                 </a>
                             ) : (
-                                <span>{post.author}</span>
+                                <span className="font-medium text-gray-700 dark:text-gray-300">{post.author}</span>
                             )}
-                            <span className="post-time">
+                            <span className="post-time mx-1">
                                 {formatDistanceToNow(
                                     new Date(post.createdAt),
                                     { includeSeconds: true },
@@ -200,25 +199,24 @@ const Home = () => {
                                 )}{" "}
                                 ago |
                             </span>
-                            <p 
-                                className="comment-number cursor-pointer"
+                            <p
+                                className="comment-number cursor-pointer hover:underline"
                                 onClick={() => navigate(`/${post._id}`)}
-                                
                             >
                                 {post.comments.length} comment{post.comments.length >  1 ? 's' : ''}
                             </p>
-                         
+
                             <CopyToClipboard text={`https://31thoughts.vercel.app/#/${post._id}`}
                             onCopy={() => handleCopy(post._id)}
                             >
-                            <span className="cursor-copy">| Share</span>
+                            <span className="cursor-copy hover:text-pink-500 dark:hover:text-pink-400 ml-1">| Share</span>
                             </CopyToClipboard>
 
                             {copiedPostId === post._id && (
-                                <Alert 
-                                    severity="success" 
-                                    color="warning"
-                                    className="alert"
+                                <Alert
+                                    severity="success"
+                                    color="warning" // This might need a dark mode variant if MUI doesn't handle it
+                                    className="alert absolute bottom-0 right-0 mb-2 mr-2" // Adjusted positioning
                                 >
                                     Link copied to clipboard!
                                 </Alert>

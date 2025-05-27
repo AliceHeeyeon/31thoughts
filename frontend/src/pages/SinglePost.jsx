@@ -99,32 +99,32 @@ const SinglePost = () => {
     const shareUrl = `https://31thoughts.vercel.app/#/${id}`;
     
   return (
-    <div className="single-page page">
-        <div 
-            className="back-btn cursor-pointer"
+    <div className="single-page page bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+        <div
+            className="back-btn cursor-pointer flex items-center text-pink-500 dark:text-pink-400 hover:text-pink-600 dark:hover:text-pink-300 mb-4"
             onClick = {goBack}
         >
-            <HiOutlineArrowNarrowLeft />
+            <HiOutlineArrowNarrowLeft className="mr-1" />
             <p>Back</p>
         </div>
         {post && (
             <>
-            <div className="post-box">
+            <div className="post-box bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-6">
 
-                <div className="post-top">
-                    <p className="text">{post.subject}</p>
-                    <div className="like">
+                <div className="post-top flex justify-between items-start">
+                    <p className="text text-2xl font-semibold text-gray-800 dark:text-gray-100">{post.subject}</p>
+                    <div className="like flex items-center text-gray-600 dark:text-gray-400">
                         {post.likes}
-                        <BsFillHandThumbsUpFill 
+                        <BsFillHandThumbsUpFill
                             onClick={() => handleLike(post._id)}
-                            className="cursor-cell"
+                            className="cursor-pointer ml-1 text-pink-500 hover:text-pink-600 dark:text-pink-400 dark:hover:text-pink-500"
                         />
                     </div>
                 </div>
         
-                <div className="post-bottom">
-                    <p>By {post.author}</p>
-                    <span className="post-time">
+                <div className="post-bottom mt-3 text-sm text-gray-500 dark:text-gray-400">
+                    <p className="font-medium text-gray-700 dark:text-gray-300">By {post.author}</p>
+                    <span className="post-time mx-1">
                         {formatDistanceToNow(
                             new Date(post.createdAt),
                             { includeSeconds: true },
@@ -134,18 +134,18 @@ const SinglePost = () => {
                     </span>
                     <p className="comment-number">{post.comments.length} comment{post.comments.length >  1 ? 's' : ''}</p>
                 
-                    <CopyToClipboard 
+                    <CopyToClipboard
                         text={shareUrl}
                         onCopy={handleCopy}
                     >
-                        <p className="cursor-copy">| Share</p>
+                        <p className="cursor-copy hover:text-pink-500 dark:hover:text-pink-400 ml-1">| Share</p>
                     </CopyToClipboard>
 
                     {copied && (
-                        <Alert 
-                            severity="success" 
-                            color="warning"
-                            className="alert"
+                        <Alert
+                            severity="success"
+                            color="warning" // Consider dark mode variant for MUI Alert if needed
+                            className="alert absolute bottom-0 right-0 mb-2 mr-2"
                         >
                         Link copied to clipboard!
                         </Alert>
@@ -156,61 +156,61 @@ const SinglePost = () => {
             </div>
             {/* end of post */}
 
-            <div className="social-sharing">
+            <div className="social-sharing flex justify-center space-x-2 my-6">
                 <FacebookShareButton url={shareUrl}>
-                    <FacebookIcon size={32} round={true}/>
+                    <FacebookIcon size={32} round={true} bgStyle={{ fill: 'darkgray' }} iconFillColor="white"/>
                 </FacebookShareButton>
                 <TwitterShareButton url={shareUrl}>
-                    <XIcon size={32} round={true} />
+                    <XIcon size={32} round={true} bgStyle={{ fill: 'darkgray' }} iconFillColor="white"/>
                 </TwitterShareButton>
                 <RedditShareButton url={shareUrl}>
-                    <RedditIcon size={32} round={true} />
+                    <RedditIcon size={32} round={true} bgStyle={{ fill: 'darkgray' }} iconFillColor="white"/>
                 </RedditShareButton>
                 <TelegramShareButton url={shareUrl}>
-                    <TelegramIcon size={32} round={true} />
+                    <TelegramIcon size={32} round={true} bgStyle={{ fill: 'darkgray' }} iconFillColor="white"/>
                 </TelegramShareButton>
-                <PinterestShareButton url={shareUrl}>
-                    <PinterestIcon size={32} round={true} />
+                <PinterestShareButton url={shareUrl} media={post.subject}>
+                    <PinterestIcon size={32} round={true} bgStyle={{ fill: 'darkgray' }} iconFillColor="white"/>
                 </PinterestShareButton>
                 <LinkedinShareButton url={shareUrl}>
-                    <LinkedinIcon size={32} round={true} />
+                    <LinkedinIcon size={32} round={true} bgStyle={{ fill: 'darkgray' }} iconFillColor="white"/>
                 </LinkedinShareButton>
             </div>
 
-            <div className="comments">
+            <div className="comments bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
 
-                <div className="add-comment">
+                <div className="add-comment mb-6">
                     <textarea
-                        className="comment-input"
+                        className="comment-input w-full p-3 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-pink-500 focus:border-pink-500"
                         type="text"
                         placeholder="Add your comment"
                         onChange={(e) => setNewComment(e.target.value)}
                         value={newComment}
                     />
-                    <div className="username">
-                        <label>user name</label>
+                    <div className="username mt-3">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">User name</label>
                         <input
-                            className="comment-username"
+                            className="comment-username w-full p-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-pink-500 focus:border-pink-500"
                             type="text"
                             onChange={(e) => setUserName(e.target.value)}
                             value={userName}
                         />
                     </div>
-                    {error && <div className="singlepage-error">{error}</div>}
-                    <button 
+                    {error && <div className="singlepage-error text-red-500 dark:text-red-400 mt-2">{error}</div>}
+                    <button
                         onClick={handleAddComment}
-                        className="comment-btn"
+                        className="comment-btn mt-4 w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-pink-600 dark:hover:bg-pink-700"
                     >
                         Add Comment
                     </button>
                 </div>
 
                 {post.comments.map((comment) => (
-                    <div className="prev-comment" key={comment._id}>
-                        <p>{comment.text}</p>
-                        <div className="prev-comment-bottom">
-                            <p>By {comment.author}</p>
-                            <span className="post-time">
+                    <div className="prev-comment border-t border-gray-200 dark:border-gray-700 py-4" key={comment._id}>
+                        <p className="text-gray-800 dark:text-gray-100">{comment.text}</p>
+                        <div className="prev-comment-bottom mt-2 text-xs text-gray-500 dark:text-gray-400">
+                            <p className="font-medium text-gray-700 dark:text-gray-300">By {comment.author}</p>
+                            <span className="post-time ml-1">
                                 {formatDistanceToNow(
                                     new Date(comment.createdAt),
                                     { includeSeconds: true },

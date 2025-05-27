@@ -13,7 +13,7 @@ import SinglePost from './pages/SinglePost'
 function App() {
 
   return (
-    <div className='App'>
+    <div className='App bg-gray-100 dark:bg-gray-900 min-h-screen'>
       <HashRouter>
         <Header />
           <div className='pages'>
