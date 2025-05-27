@@ -1,5 +1,5 @@
 /* Google font */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
 
 /* Tailwind */
 @tailwind base;
@@ -7,526 +7,537 @@
 @tailwind utilities;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Fredoka", sans-serif;
-    background-color: #F8F4F4;
-    color: #402022; /* Default text color for light mode */
+  font-family: "Fredoka", sans-serif;
+  background-color: #f8f4f4;
+  color: #402022; /* Default text color for light mode */
 }
 
 .dark body {
-    background-color: #1a202c; /* Dark background for body */
-    color: #e2e8f0; /* Light text color for body */
+  background-color: #1a202c; /* Dark background for body */
+  color: #e2e8f0; /* Light text color for body */
 }
 
 /* header */
 .header {
-    background-color: white;
+  background-color: white;
+  display: flex;
+  padding: 15px 20px;
+  justify-content: space-between;
 }
 
 .dark .header {
-    background-color: #2d3748; /* Dark background for header */
-    color: #e2e8f0; /* Light text color for header */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
+  background-color: #2d3748; /* Dark background for header */
+  color: #e2e8f0; /* Light text color for header */
+  display: flex;
+  padding: 15px 20px;
+  justify-content: space-between;
 }
 
 .logo {
-    color: #402022;
-    font-size: 19px;
-    font-weight: 600;
+  color: #402022;
+  font-size: 19px;
+  font-weight: 600;
 }
 
 .logo span {
-    color: #F14DA3;
-    margin-right: 5px;
+  color: #f14da3;
+  margin-right: 5px;
 }
 
 .new-btn {
-    background-color: #F14DA3;
-    border: none;
-    border-radius: 30px;
-    padding: 6px 15px;
-    color: white;
-    font-size: 13px;
+  background-color: #f14da3;
+  border: none;
+  border-radius: 30px;
+  padding: 6px 15px;
+  color: white;
+  font-size: 13px;
 }
 
 /* Home */
 .page {
-    padding: 30px 30px 60px;
+  padding: 30px 30px 60px;
 }
 
 .main {
-    font-size: 30px;
-    text-align: center;
-    line-height: 38px;
-    font-weight: 600;
-    color: #402022;
+  font-size: 30px;
+  text-align: center;
+  line-height: 38px;
+  font-weight: 600;
+  color: #402022;
 }
 
 .sub {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 28px;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 40px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .sorting-category {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
 }
 
 .sorting-option {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-bottom: 2px solid black;
-    padding-bottom: 18px;
-    font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid black;
+  padding-bottom: 18px;
+  font-size: 18px;
 }
 
 .dark .sorting-option {
-    border-bottom: 2px solid #a0aec0; /* Lighter border for dark mode */
+  border-bottom: 2px solid #a0aec0; /* Lighter border for dark mode */
 }
 
 .dark .sorting-option:hover {
-    color: #F14DA3;
+  color: #f14da3;
 }
 
 .sorting-option svg {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .sorting-like {
-    border-bottom: 2px solid#F14DA3;
+  border-bottom: 2px solid#F14DA3;
 }
 
 .sorting-date {
-    border-bottom: 2px solid#F14DA3;
+  border-bottom: 2px solid#F14DA3;
 }
 
 .post-box {
-    background-color: white;
-    color: #402022; /* Default text color for post-box in light mode */
-    margin-bottom: 10px;
-    margin-top: 20px;
-    padding: 15px 20px;
-    border-radius: 10px;
+  background-color: white;
+  color: #402022; /* Default text color for post-box in light mode */
+  margin-bottom: 10px;
+  margin-top: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
 }
 
 .dark .post-box {
-    background-color: #2d3748; /* Dark background for post-box */
-    color: #e2e8f0; /* Light text color for post-box */
-    border: 1px solid #4a5568; /* Optional: add a border for better separation */
+  background-color: #2d3748; /* Dark background for post-box */
+  color: #e2e8f0; /* Light text color for post-box */
+  border: 1px solid #4a5568; /* Optional: add a border for better separation */
 }
 
 .post-top {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-.post-top p{
-    line-height: 21px;
+.post-top p {
+  line-height: 21px;
 }
 
 .like {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .like svg {
-    margin-left: 3px;
+  margin-left: 3px;
 }
 
 .post-bottom {
-    position: relative;
-    display: flex;
-    justify-content: end;
-    margin-top: 10px;
-    font-size: 11px;
-    color: rgb(148, 148, 148);
+  position: relative;
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+  font-size: 11px;
+  color: rgb(148, 148, 148);
 }
 
 .dark .post-bottom {
-    color: #a0aec0; /* Lighter text color for post-bottom in dark mode */
+  color: #a0aec0; /* Lighter text color for post-bottom in dark mode */
 }
 
 .post-time {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .alert {
-    position: absolute;
-    bottom: -50px;
-    right: -20px;
+  position: absolute;
+  bottom: -50px;
+  right: -20px;
 }
 
 .comment-number {
-    margin-inline : 5px
+  margin-inline: 5px;
 }
 
 .user-linkedin {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* single page */
 textarea,
 input {
-    border: none;
-    border-radius: 10px;
-    background-color: #fff; /* Default light background */
-    color: #402022; /* Default dark text */
+  border: none;
+  border-radius: 10px;
+  background-color: #fff; /* Default light background */
+  color: #402022; /* Default dark text */
 }
 textarea:focus,
 input:focus {
-    outline: none;
+  outline: none;
 }
 
 .dark textarea,
 .dark input {
-    background-color: #4a5568; /* Darker background for inputs */
-    color: #e2e8f0; /* Light text for inputs */
-    border: 1px solid #718096; /* Optional: border for inputs */
+  background-color: #4a5568; /* Darker background for inputs */
+  color: #e2e8f0; /* Light text for inputs */
+  border: 1px solid #718096; /* Optional: border for inputs */
 }
 
 .dark textarea::placeholder,
 .dark input::placeholder {
-    color: #a0aec0; /* Lighter placeholder text */
+  color: #a0aec0; /* Lighter placeholder text */
 }
 
 .social-sharing {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
 }
 
 .add-comment {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .comment-input {
-    height: 100px;
-    line-height: 24px;
-    font-size: 14px;
-    padding: 10px 20px;
+  height: 100px;
+  line-height: 24px;
+  font-size: 14px;
+  padding: 10px 20px;
 }
 
 .username {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .comment-username {
-    height: 30px;
-    margin-left: 10px;
-    padding-left:10px; 
-    font-size: 14px;
+  height: 30px;
+  margin-left: 10px;
+  padding-left: 10px;
+  font-size: 14px;
 }
 
 .comment-btn {
-    border: none;
-    width: 150px;
-    height: 40px;
-    background-color: #F14DA3;
-    color: white;
-    border-radius: 30px;
-    margin-top: 35px;
-    margin-bottom: 10px;
+  border: none;
+  width: 150px;
+  height: 40px;
+  background-color: #f14da3;
+  color: white;
+  border-radius: 30px;
+  margin-top: 35px;
+  margin-bottom: 10px;
 }
 
 .dark .comment-btn {
-    background-color: #e53e8c; /* Slightly adjusted pink for dark mode if needed */
-    color: #1a202c; /* Darker text for better contrast on pink */
+  background-color: #e53e8c; /* Slightly adjusted pink for dark mode if needed */
+  color: #1a202c; /* Darker text for better contrast on pink */
 }
 
 .prev-comment {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .prev-comment-bottom {
-    display: flex;
-    font-size: 14px;
-    margin-top: 10px;
-    font-size: 14px;
-    color: rgb(148, 148, 148);
+  display: flex;
+  font-size: 14px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgb(148, 148, 148);
 }
 
 .dark .prev-comment-bottom {
-    color: #a0aec0; /* Lighter text for comment metadata in dark mode */
+  color: #a0aec0; /* Lighter text for comment metadata in dark mode */
 }
 
 .singlepage-error {
-    position: absolute;
-    left: 0;
-    bottom: 56px;
-    color: #F14DA3;
+  position: absolute;
+  left: 0;
+  bottom: 56px;
+  color: #f14da3;
 }
-
-
 
 /* Add new thought page */
 .back-btn {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .back-btn p {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .page-title {
-    font-size: 30px;
-    margin-top: 15px;
+  font-size: 30px;
+  margin-top: 15px;
 }
 
 .form-top,
 .form-bottom {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
 }
 
 .form-bottom {
-    position: relative;
+  position: relative;
 }
 
 .form-user {
-    display: flex;
+  display: flex;
 }
 
 .form-linkedin {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .form-label {
-    display: flex;
+  display: flex;
 }
 
 .form-label span {
-    color: rgb(243, 62, 35);
-    margin-left: 5px;
+  color: rgb(243, 62, 35);
+  margin-left: 5px;
 }
 
 .form-top textarea {
-    height: 150px;
-    margin-top: 10px;
-    padding: 15px;
+  height: 150px;
+  margin-top: 10px;
+  padding: 15px;
 }
 
 .input-username,
 .input-linkedin {
-    height: 40px;
-    padding: 8px 15px;
-    margin-top: 10px;
-    
+  height: 40px;
+  padding: 8px 15px;
+  margin-top: 10px;
 }
 
 .submit-btn {
-    margin-top: 50px;
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 30px;
-    background-color: #F14DA3;
-    color: white;
-    font-size: 15px;
+  margin-top: 50px;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  background-color: #f14da3;
+  color: white;
+  font-size: 15px;
 }
 
 .error {
-    color: rgb(255, 0, 153);
-    position: absolute;
-    bottom: -30px;
+  color: rgb(255, 0, 153);
+  position: absolute;
+  bottom: -30px;
 }
 
 .dark .error {
-    color: #ff63b2; /* Adjusted error color for dark mode */
+  color: #ff63b2; /* Adjusted error color for dark mode */
 }
 
 .dark .logo {
-    color: #e2e8f0; /* Light text for logo in dark mode */
+  color: #e2e8f0; /* Light text for logo in dark mode */
 }
 
 .dark .logo span {
-    color: #F14DA3; /* Keep pink for logo span */
+  color: #f14da3; /* Keep pink for logo span */
 }
 
 .dark .new-btn {
-    background-color: #F14DA3; /* Keep pink for new button */
-    color: #1a202c; /* Darker text for better contrast on pink */
+  background-color: #f14da3; /* Keep pink for new button */
+  color: #1a202c; /* Darker text for better contrast on pink */
 }
 
 .dark .main {
-    color: #e2e8f0; /* Light text for main heading in dark mode */
+  color: #e2e8f0; /* Light text for main heading in dark mode */
 }
 
 .dark .sub {
-    color: #cbd5e0; /* Slightly dimmer light text for sub heading */
+  color: #cbd5e0; /* Slightly dimmer light text for sub heading */
 }
 
 .dark .user-linkedin {
-    color: #63b3ed; /* Lighter blue for links in dark mode */
+  color: #63b3ed; /* Lighter blue for links in dark mode */
 }
 
 /* Ensure theme switcher button itself has appropriate dark mode styles if not covered by global button styles */
 .dark .theme-switcher-btn {
-    background-color: #4a5568; /* Darker background for theme switcher */
-    color: #e2e8f0; /* Light text */
-    border: 1px solid #718096;
+  background-color: #4a5568; /* Darker background for theme switcher */
+  color: #e2e8f0; /* Light text */
+  border: 1px solid #718096;
 }
 
 .dark .back-btn p {
-    color: #e2e8f0;
+  color: #e2e8f0;
 }
 
 .dark .page-title {
-    color: #e2e8f0;
+  color: #e2e8f0;
 }
 
 .dark .form-label {
-    color: #e2e8f0;
+  color: #e2e8f0;
 }
 
-.dark .form-label span { /* Keep this for required asterisk if any */
-    color: rgb(243, 62, 35);
+.dark .form-label span {
+  /* Keep this for required asterisk if any */
+  color: rgb(243, 62, 35);
 }
 
 .dark .submit-btn {
-    background-color: #F14DA3;
-    color: #1a202c;
-    left: 0;
+  background-color: #f14da3;
+  color: #1a202c;
+  left: 0;
 }
 
 /* Footer */
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    width: 100%;
-    font-size: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 30px;
-    background-color:#fb64b2;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 30px;
+  background-color: #fb64b2;
 }
 
 .developer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
 }
 
 .developer img {
-    width: 35px;
-    margin-left: 5px;
+  width: 35px;
+  margin-left: 5px;
 }
 
 .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 }
 
 .text-loading {
-    margin-left: 10px;
-    font-size: 18px;
+  margin-left: 10px;
+  font-size: 18px;
 }
 
+/* Hide mode toggle button for small mobile devices */
+@media screen and (max-width: 360px) {
+  .modeToggleButton {
+    display: none;
+  }
+}
 
 /* tablet */
 @media screen and (min-width: 768px) {
-    .header {
-        padding: 30px 150px;
-    }
-    .home,
-    .page {
-        padding: 50px 150px;
-    }
-    footer {
-        padding-inline: 150px;
-    }
+  .header {
+    padding: 30px 150px;
+  }
+  .home,
+  .page {
+    padding: 50px 150px;
+  }
+  footer {
+    padding-inline: 150px;
+  }
 }
 
 /* desktop-small */
 @media screen and (min-width: 992px) {
-    .home,
-    .page {
-        padding: 50px 250px;
-    }
-    footer {
-        padding-inline: 250px;
-        font-size: 12px;
-    }
+  .home,
+  .page {
+    padding: 50px 250px;
+  }
+  footer {
+    padding-inline: 250px;
+    font-size: 12px;
+  }
 
-    /* header */
-    .header {
-        padding: 30px 250px;
-    }
+  /* header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+  }
 
-    .logo {
-        font-size: 22px;
-    }
+  .dark .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+  }
 
-    .new-btn {
-        padding: 8px 20px;
-        font-size: 15px;
-    }
+  .logo {
+    font-size: 22px;
+  }
 
-    /* Home */
-    .main {
-        font-size: 45px;
-        line-height: 65px;
-    }
+  .new-btn {
+    padding: 8px 20px;
+    font-size: 15px;
+  }
 
-    .sub {
-        font-size: 30px;
-        line-height: 40px;
-        margin-top: 30px;
-        margin-bottom: 65px;
-    }
+  /* Home */
+  .main {
+    font-size: 45px;
+    line-height: 65px;
+  }
 
-    .sorting-option {
-        padding-bottom: 25px;
-        font-size: 20px;
-    }
+  .sub {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 30px;
+    margin-bottom: 65px;
+  }
 
-    .post-top p{
-        line-height: 21px;
-    }
-    
-    .post-bottom {
-        font-size: 14px;
-    }
+  .sorting-option {
+    padding-bottom: 25px;
+    font-size: 20px;
+  }
 
-    
+  .post-top p {
+    line-height: 21px;
+  }
+
+  .post-bottom {
+    font-size: 14px;
+  }
 }
 
 /* desktop-small */
 @media screen and (min-width: 1250px) {
-    .header {
-        padding: 30px 400px;
-    }
-    .home,
-    .page {
-        padding: 50px 400px;
-    }
-    footer {
-        padding-inline: 400px;
-    }
+  .home,
+  .page {
+    padding: 50px 400px;
+  }
+  footer {
+    padding-inline: 400px;
+  }
 }

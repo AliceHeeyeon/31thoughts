@@ -20,10 +20,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div
-        className="logo cursor-pointer"
-        onClick={() => navigate("/")}
-      >
+      <div className="logo cursor-pointer" onClick={() => navigate("/")}>
         <span>31</span>
         Thoughts
       </div>
@@ -36,9 +33,9 @@ const Header = () => {
         </button>
         <button
           onClick={handleThemeSwitch}
-          className="theme-switcher-btn p-2 bg-gray-200 dark:bg-gray-700 rounded"
+          className="theme-switcher-btn p-2 bg-gray-200 dark:bg-gray-700 rounded modeToggleButton"
         >
-          {theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+          {theme === "light" ? "Dark Mode" : "Light Mode"}
         </button>
       </div>
     </div>
